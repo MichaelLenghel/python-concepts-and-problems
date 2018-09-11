@@ -5,14 +5,14 @@ Given five positive integers, find the minimum and maximum values that can be ca
 """
 
 def miniMaxSum(arr):
-    max = min = arr[0]
-    min_index = max_index = max_sum = min_sum =  0
+    maxi = mini = arr[0]
+    min_index = max_index = max_sum = min_sum = 0
     for i, n in enumerate(arr):
-        if max > n:
-            max = n
+        if maxi > n:
+            maxi = n
             max_index = i
-        if min < n:
-            min = n
+        if mini < n:
+            mini = n
             min_index = i
             
     # Calculate the max sum
@@ -33,6 +33,6 @@ def miniMaxSum(arr):
     
         
 if __name__ == '__main__':
-    arr = list(map(int, input().rstrip().split()))
+    arr = list(map(int, input("Add 5 elements ").rstrip().split()))
 
     miniMaxSum(arr)

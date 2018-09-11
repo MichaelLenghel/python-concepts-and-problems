@@ -17,7 +17,7 @@ class LinkedList:
 			previous_node = None
 			current_node = self.head
 
-			while current_node != None:
+			while current_node:
 				if new_node.item > current_node.item:
 					previous_node = current_node
 					current_node = current_node.next
