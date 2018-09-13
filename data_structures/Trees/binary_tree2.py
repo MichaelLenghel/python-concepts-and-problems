@@ -1,3 +1,9 @@
+class Node:
+	def __init__(self, key):
+		self.key = key
+		self.previous = self.next = None
+		self.tail = self.head = None
+
 class BinaryTree:
 	def __init__(self, key = None):
 		self.key = key
@@ -100,7 +106,7 @@ else:
 print("Binary tree sorted: ")
 tree.sort(root)
 
-# if tree.val_bst(root):
-# 	print("Is a binary search tree")
-# else:
-# 	print("Not a binary search tree")
+if tree.val_bst(root):
+	print("Is a binary search tree")
+else:
+	print("Not a binary search tree")

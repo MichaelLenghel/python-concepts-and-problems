@@ -9,41 +9,41 @@ class LinkedList:
 		self.tail = None
 
 	def insert(self, item):
+		# Insert into linked list without sorting (Each new element  at end): 
+		# new_node = Node(item)
+		# if self.head is None:
+		# 	self.head = new_node
+		# 	self.tail = new_node
+		# else:
+		# 	self.tail.next = new_node
+		# 	self.tail = new_node
+
+		# Insert in sorted order
+		new_node = Node(item)
 		if self.head is None:
-			self.head = Node(item)
-			self.tail = Node(item)
+			self.head = new_node
+			self.tail = new_node
 		else:
-			new_node = Node(item)
-			previous_node = None
-			current_node = self.head
-
-			while current_node:
-				if new_node.item > current_node.item:
-					previous_node = current_node
-					current_node = current_node.next
-				else:
+			previous = None
+			current = self.head
+			while current:
+				if new_node.item < current.item:
 					break
+				previous = current
+				current = current.next
 
-			# Inserting at head of lists
-			if previous_node == None:
+			# Insert at the head of the list
+			if not previous:
 				new_node.next = self.head
 				self.head = new_node
-
-			# Inserting at the end of the list
-			elif current_node is None:
-				if self.head.next == None:
-					self.head.next = new_node
+			# Insert at the end of the list
+			elif not current:
 				self.tail.next = new_node
 				self.tail = new_node
-
-			# insert at middle
+			# Insert in middle
 			else:
-				# Need to set link of head to chain to rest of elements
-				if self.head.next is None:
-					self.head.next = new_node
-				previous_node.next = new_node
-				new_node.next = current_node
-
+				previous.next = new_node
+				new_node.next = current
 
 
 	def delete(self, item):
@@ -84,7 +84,9 @@ class LinkedList:
 		temp_head = self.head
 		print()
 		while temp_head != None:
-			print(temp_head.item)
+			print(temp_head.item, end="")
+			if temp_head.next:
+				print(end=", ")
 			temp_head = temp_head.next
 
 
@@ -101,15 +103,15 @@ if __name__ == '__main__':
 	print("Initial list: ") 
 	ll.show()
 
-	print("deleted" , ll.delete(25))
+	print("\ndeleted" , ll.delete(25))
 	ll.show()
-	print("deleted" , ll.delete(18))
+	print("\ndeleted" , ll.delete(18))
 	ll.show()
-	print("deleted" , ll.delete(10))
+	print("\ndeleted" , ll.delete(10))
 	ll.show()
-	print("deleted" , ll.delete(15))
+	print("\ndeleted" , ll.delete(15))
 	ll.show()
-	print("deleted" , ll.delete(1))
+	print("\ndeleted" , ll.delete(1))
 	ll.show()
-	print("deleted" , ll.delete(11))
+	print("\ndeleted" , ll.delete(11))
 	ll.show()
